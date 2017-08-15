@@ -22,6 +22,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
+		
+		<!-- jstl-->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 
 		<!-- JAVA EE API -->
@@ -46,7 +54,7 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<!-- update to java 1.7 -->
+			<!-- update to java 1.8 -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>

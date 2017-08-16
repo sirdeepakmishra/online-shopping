@@ -15,6 +15,14 @@
 
 
 	<dependencies>
+	<!-- Linking Backend Project -->
+	<dependency>
+	<groupId>net.deepak</groupId>
+	<artifactId>shoppingbackend</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	
+	
 		<!-- spring web mvc -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>

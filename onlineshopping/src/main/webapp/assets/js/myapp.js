@@ -14,8 +14,18 @@ $(function(){
 		$('#home').addClass('active');
 		break;
 		
+		
+	case 'All Products':
+		$('#product').addClass('active');
+		break;
+		
+		
+		
+		
+		
 	default:
-		$('#home').addClass('active');
+		$('#product').addClass('active');
+	$('#a_'+menu).addClass('active');
 		break;	
 	
 	

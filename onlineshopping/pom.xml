@@ -60,6 +60,9 @@
 
 
 	</dependencies>
+	
+	
+	
 	<build>
 		<plugins>
 			<!-- update to java 1.8 -->

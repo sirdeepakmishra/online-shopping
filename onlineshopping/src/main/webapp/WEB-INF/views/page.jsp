@@ -27,6 +27,7 @@
 
 <script>
 	window.menu = '${title}';
+	window.contextRoot ="${contextRoot}";
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -34,8 +35,11 @@
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
 <!-- Bootstrap readable theme CSS -->
-
 <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+
+
+<!-- datatable 4CSS -->
+<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
 
 
 
@@ -80,26 +84,44 @@
 				<%@ include file="listProducts.jsp"%>
 			</c:if>
 			
+			
+			<!--load when user click Show Product-->
+		<c:if test="${userClickShowProduct == true }">
+				<%@ include file="singleProduct.jsp"%>
+			</c:if>
+			
 		
 
 		</div>
 
 		<!-- /.container -->
 
-		<!-- Footer -->
+		<!-- Footer comes here -->
 		<%@ include file="./shared/footer.jsp"%>
 
 
 
 
 
-		<!-- Bootstrap core JavaScript -->
+		<!-- jquery -->
 		<script src="${js}/jquery.js"></script>
 		<script src="${js}/popper.min.js"></script>
+		
+		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.min.js"></script>
-
+		
+			<!-- DATA TABLE plugin -->
+		<script src="${js}/jquery.dataTables.js"></script>
+		
+	
+<!-- DATA TABLE bootstrap -->
+		<script src="${js}/dataTables.bootstrap4.js"></script>
+		
+		
 		<!--self coded javascript  -->
 		<script src="${js}/myapp.js"></script>
+		
+			
 
 
 	</div>

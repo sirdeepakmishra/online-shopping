@@ -115,7 +115,7 @@ public class PageController {
 		
 	}
 
-	/// ****************************************************************************8///
+	/// ****************************************************************************///
 	@RequestMapping(value = "/test2")
 	public ModelAndView test2(@RequestParam(value = "greeting", required = false) String greeting) {
 		if (greeting == null) {

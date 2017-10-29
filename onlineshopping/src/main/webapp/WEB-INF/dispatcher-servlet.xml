@@ -14,6 +14,7 @@
    " >
 
 
+
 	<context:component-scan base-package="net.deepak.onlineshopping" />
 	<context:component-scan base-package="net.deepak.shoppingbackend" />
 	
@@ -54,6 +55,7 @@
 
 <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 	<property name="flowRegistry" ref="flowRegistry"/>
+		<property name="order" value="-1"/>
 </bean>
 
 <bean  id="viewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">

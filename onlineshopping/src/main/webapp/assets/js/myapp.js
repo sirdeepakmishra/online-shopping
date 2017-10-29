@@ -359,7 +359,7 @@ $(function(){
 					minlength:2
 						},
 						
-				description : {
+				cat_description : {
 					required:true
 					}
 			},
@@ -371,7 +371,7 @@ $(function(){
 					minlength:'the category name should not be less than 2 character!'
 						},
 						
-				description : {
+				cat_description : {
 					required:'Please add description for category !'
 					}
 				

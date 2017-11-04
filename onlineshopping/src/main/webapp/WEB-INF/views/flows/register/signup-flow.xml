@@ -4,12 +4,43 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+
+<var name="userVar" class="net.deepak.shoppingbackend.dto.User"/>
+<var name="billVar" class="net.deepak.shoppingbackend.dto.Address"/>
+<var name="cartVar" class="net.deepak.shoppingbackend.dto.Cart"/>
+
+<!--returning and adding inside the flow a registerModal instance  -->
+<on-start>
+<evaluate expression="registerHandler.init()" result="flowScope.registerModel" />
+</on-start>
+
 <!-- is the start state -->
-<view-state id="personal" view="flows/register/signup-personal"></view-state>
+<view-state id="personal" view="flows/register/signup-personal"  model="userVar">
+<transition on="gotoBillingView"  to="billing"  />
+<on-exit>
+<evaluate expression="registerHandler.addUser(flowScope.registerModel,userVar)"/>
+</on-exit>
+</view-state>
 
-<view-state id="billing" view="flows/register/signup-billing"></view-state>
+<view-state id="billing" view="flows/register/signup-billing" model="billVar">
+<transition on="gotoPersonalView"  to="personal"  />
+<transition on="gotoConfirmView"  to="confirm"  />
+<on-exit>
+<evaluate expression="registerHandler.addBilling(flowScope.registerModel,billVar)"/>
+</on-exit>
+</view-state>
 
-<view-state id="confirm" view="flows/register/signup-confirm"></view-state>
+<view-state id="confirm" view="flows/register/signup-confirm" model="flowScope.registerModel">
+<transition on="gotoPersonalView"  to="personal"  />
+<transition on="gotoBillingView"  to="billing"  />
+<transition on="gotoSubmitActState"  to="submit"  />
+</view-state>
+
+<action-state id="submit">
+<evaluate expression="registerHandler.saveAll(flowScope.registerModel)"/>
+<transition on="gotoSuccess"  to="success"  />
+
+</action-state>
 
 
 <!-- end state -->

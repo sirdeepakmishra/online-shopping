@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Address implements Serializable {
@@ -22,28 +23,40 @@ public class Address implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	/*@Column(name="user_id")
-	private int userId;*/
+	@Column(name="user_id")
+	private int userId;
 	
-	/************/
+/*	*//************//*
 	@ManyToOne
 	private User user;
-	/************/
+	*//************/
 	
+	@NotBlank(message = "Please enter address line one!")
 	@Column(name="address_line_one")
 	private String addressLineOne;
 	
+	
+	@NotBlank(message = "Please enter address line two!")
 	@Column(name="address_line_two")
 	private String addressLineTwo;
 	
+	@NotBlank(message = "Please enter city!")
 	private String city;
+	
+	@NotBlank(message = "Please enter state!")
 	private String state;
+	
+	@NotBlank(message = "Please enter country!")
 	private String country;
 	
+	@NotBlank(message = "Please enter postal code!")
 	@Column(name="postal_code")
 	private String postalCode;
 	
+	@Column(name="is_shipping")
 	private boolean shipping;
+	
+	@Column(name="is_billing")
 	private boolean billing;
 	
 	
@@ -109,18 +122,26 @@ public class Address implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", user=" + user + ", addressLineOne=" + addressLineOne + ", addressLineTwo="
+		return "Address [id=" + id + ", userId=" + userId + ", addressLineOne=" + addressLineOne + ", addressLineTwo="
 				+ addressLineTwo + ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode="
 				+ postalCode + ", shipping=" + shipping + ", billing=" + billing + "]";
 	}
 
-	public User getUser() {
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	/*public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
-	}
+	}*/
 
 	
 	

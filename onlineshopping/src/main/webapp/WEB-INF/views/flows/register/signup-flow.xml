@@ -16,11 +16,19 @@
 
 <!-- is the start state -->
 <view-state id="personal" view="flows/register/signup-personal"  model="userVar">
-<transition on="gotoBillingView"  to="billing"  />
-<on-exit>
+<transition on="gotoBillingView"  to="validate"  />
+<on-exit> 
 <evaluate expression="registerHandler.addUser(flowScope.registerModel,userVar)"/>
 </on-exit>
 </view-state>
+
+<action-state id="validate">
+<evaluate expression="registerHandler.validateUser(userVar,messageContext)"/>
+<transition on="retunSuccess"  to="billing"  />
+<transition on="retunFailure"  to="personal"  />
+</action-state>
+
+
 
 <view-state id="billing" view="flows/register/signup-billing" model="billVar">
 <transition on="gotoPersonalView"  to="personal"  />
@@ -39,7 +47,6 @@
 <action-state id="submit">
 <evaluate expression="registerHandler.saveAll(flowScope.registerModel)"/>
 <transition on="gotoSuccess"  to="success"  />
-
 </action-state>
 
 
@@ -50,7 +57,8 @@
 
 <!--Global Transition  -->
 <global-transitions>
-<transition on="home" to="gotoHome"/>
+<transition on="home" to="gotoHome" validate="false"/>
+<!-- validate false is used when user at signup and want to go to home without filling form -->
  </global-transitions>
 
 

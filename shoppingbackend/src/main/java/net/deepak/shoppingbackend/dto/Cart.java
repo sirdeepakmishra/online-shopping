@@ -29,6 +29,7 @@ public class Cart implements Serializable {
 	private int userId;*/
 	
 	/**********/
+	// linking the cart with a user
 	@OneToOne
 	//@JoinColumn(name="uid")
 	private User user;
